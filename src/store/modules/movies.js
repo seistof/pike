@@ -21,6 +21,9 @@ export default {
   },
   actions: {
     fetchMovies: async ({commit}) => {
+      commit('setMovies', []);
+      commit('setLoading', true);
+
       const {data} = await api.fetchMovies();
 
       commit('setMovies', data);
