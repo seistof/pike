@@ -1,11 +1,10 @@
 <template>
   <div class="movie-details">
-    <Header/>
     <Return/>
     <Loader v-if="getLoading"/>
     <MovieCard
         v-if="movie"
-        :isLink="isLink"
+        :isLink="false"
         :movie="movie"
     />
     <div v-else-if="!getLoading" class="movie-details__not-found">
@@ -15,7 +14,6 @@
 </template>
 
 <script>
-import Header from '@/components/Header';
 import Return from '@/components/Return';
 import Loader from '@/components/Loader';
 import MovieCard from '@/components/MovieCard';
@@ -24,7 +22,6 @@ import {mapActions, mapGetters} from 'vuex';
 export default {
   data() {
     return {
-      isLink: false,
       movie: null,
     };
   },
@@ -45,24 +42,25 @@ export default {
   components: {
     MovieCard,
     Return,
-    Header,
     Loader,
   },
 };
 </script>
 
 <style lang="scss">
+@import "../scss/vars";
+
 .movie-details {
   position: relative;
-  background: #363232;
-  height: 100vh;
+  background: $main-bg-color;
+  height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: auto;
 
   &__not-found {
-    color: #fff;
+    color: $white;
     font-weight: 500;
     font-size: 32px;
     line-height: 32px;
@@ -81,7 +79,7 @@ export default {
     }
 
     a:hover {
-      color: #fff;
+      color: $white;
     }
 
   }

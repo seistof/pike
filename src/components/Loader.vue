@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src="../assets/loader.png" class="loader">
+    <img src="../assets/loader.png" alt="loading" class="loader">
   </div>
 </template>
 
@@ -9,6 +9,7 @@
   position: absolute;
   top: calc(50%);
   animation: loading 1.2s linear infinite;
+  user-select: none;
 }
 
 @keyframes loading {

@@ -7,12 +7,8 @@ export default {
     loading: true,
   },
   getters: {
-    getAllMovies: state => {
-      return state.movies;
-    },
-    getLoading: state => {
-      return state.loading;
-    },
+    getAllMovies: state => state.movies,
+    getLoading: state => state.loading,
     getMovieById: state => id => state.movies.find(movie => movie.id === +id),
   },
   mutations: {

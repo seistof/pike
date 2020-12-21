@@ -4,13 +4,13 @@
     <div class="filter">
 
       <label class="filter__item">
-        <input type="checkbox">
+        <input v-model="sortByName" @click="isName" type="checkbox">
         <span class="checkmark"></span>
         <span>Отсортировать по названию</span>
       </label>
 
       <label class="filter__item">
-        <input type="checkbox" checked="checked">
+        <input v-model="sortByYear" @click="isYear" type="checkbox">
         <span class="checkmark"></span>
         <span>Отсортировать по году</span>
       </label>
@@ -20,16 +20,44 @@
   </div>
 </template>
 
+<script>
+export default {
+  props: {
+    sortByName: {
+      type: Boolean,
+    },
+    sortByYear: {
+      type: Boolean,
+    },
+  },
+  methods: {
+    isName() {
+      this.$emit('changeSortByName', !this.sortByName);
+    },
+    isYear() {
+      this.$emit('changeSortByYear', !this.sortByYear);
+    },
+  },
+}
+;
+</script>
+
 <style lang="scss" scoped>
+@import "../scss/vars";
+
 .control {
+  background: $main-bg-color;
+  position: fixed;
+  top: 100px;
   padding-top: 40px;
   padding-bottom: 28px;
+  z-index: 1;
 
   &__title {
     font-weight: 500;
     font-size: 32px;
     line-height: 32px;
-    color: #FFFFFF;
+    color: $white;
     padding-bottom: 16px;
   }
 
@@ -39,13 +67,13 @@
     span {
       font-size: 16px;
       line-height: 16px;
-      color: #C4C4C4;
+      color: $card-img-bg-color;
     }
 
     &__item {
       display: block;
       position: relative;
-      padding-left: 35px;
+      padding-left: 30px;
       margin-bottom: 12px;
       cursor: pointer;
       font-size: 22px;
@@ -68,10 +96,10 @@
       position: absolute;
       top: 5px;
       left: 0;
-      height: 20px;
-      width: 20px;
+      height: 17px;
+      width: 17px;
       background-color: #363232;
-      border: 1px solid #C4C4C4;
+      border: 1px solid $card-img-bg-color;
     }
 
     &__item:hover input ~ .checkmark {
@@ -79,7 +107,7 @@
     }
 
     &__item input:checked ~ .checkmark {
-      background-color: #FF5252;
+      background-color: $light-red;
     }
 
     .checkmark:after {
@@ -93,16 +121,16 @@
     }
 
     &__item input:checked ~ .checkmark {
-      border: 1px solid #FF5252;
+      border: 1px solid $light-red;
     }
 
     &__item .checkmark:after {
-      left: 5px;
-      top: -1px;
+      left: 4px;
+      top: -2px;
       width: 5px;
       height: 13px;
-      border: solid white;
-      border-width: 0 3px 3px 0;
+      border: solid $white;
+      border-width: 0 2px 2px 0;
       -webkit-transform: rotate(45deg);
       -ms-transform: rotate(45deg);
       transform: rotate(45deg);
@@ -111,7 +139,8 @@
 
   .divider {
     width: 1400px;
-    border: .5px solid #c4c4c4;
+    border: .5px solid $card-img-bg-color;
   }
 }
+
 </style>

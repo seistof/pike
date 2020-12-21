@@ -11,6 +11,8 @@
 </template>
 
 <style lang="scss" scoped>
+@import "../scss/vars";
+
 .return {
   padding-top: 40px;
   padding-bottom: 28px;
@@ -25,19 +27,19 @@
       justify-content: space-between;
       font-size: 20px;
       line-height: 20px;
-      color: rgba(255, 82, 82, 0.98);
+      color: $light-red;
       text-decoration: underline;
       margin-bottom: 20px;
 
       &:hover {
-        color: lighten(rgba(255, 82, 82, 0.98), 10);
+        color: lighten($light-red, 10);
       }
     }
   }
 
   .divider {
     width: 1400px;
-    border: .5px solid #c4c4c4;
+    border: .5px solid $card-img-bg-color;
   }
 }
 </style>
